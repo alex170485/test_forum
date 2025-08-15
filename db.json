@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Вася",
+      "email": "admin@gmail.com"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "hello"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "my_posts": [
+    {
+      "id": 1,
+      "title": "hello"
+    }
+  ]
+}
