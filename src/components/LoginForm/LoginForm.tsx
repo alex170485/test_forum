@@ -6,16 +6,15 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { loginValidation } from '@/components/LoginForm/validation.ts';
 import { FormInput } from '@/shared/ui/form/FormInput/FormInput.tsx';
 import { FormProviderWrapper } from '@/shared/ui/form/FormProviderWrapper/FormProviderWrapper.tsx';
-import { useUserContext } from '@/userContext.tsx';
-import { MOCK_ADMIN_DATA, MOCK_ADMIN_EMAIL, MOCK_USER_DATA, MOCK_USER_EMAIL } from '@/components/LoginForm/mockData.ts';
+import { MOCK_ADMIN_EMAIL, MOCK_USER_EMAIL } from '@/components/LoginForm/mockData.ts';
+import { localStorageService } from '@/helpers/localStorageService.ts';
+import { USER_ID_KEY } from '@/types.ts';
 
 type LoginFormPropsType = {
   onClose: () => void;
 };
 
 export const LoginForm = ({ onClose }: LoginFormPropsType) => {
-  const { setUserData } = useUserContext();
-
   const methods = useForm<FieldValues>({
     mode: 'onBlur',
     reValidateMode: 'onChange',
@@ -30,14 +29,16 @@ export const LoginForm = ({ onClose }: LoginFormPropsType) => {
 
   const onSubmit = (values: FieldValues) => {
     if (values.email === MOCK_ADMIN_EMAIL) {
-      setUserData(MOCK_ADMIN_DATA);
+      localStorageService.set(USER_ID_KEY, '1');
+      // onSetId('1');
       onClose();
 
       return;
     }
 
     if (values.email === MOCK_USER_EMAIL) {
-      setUserData(MOCK_USER_DATA);
+      localStorageService.set(USER_ID_KEY, '2');
+      // onSetId('2');
       onClose();
 
       return;

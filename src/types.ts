@@ -14,12 +14,25 @@ export const USER_ROLE_MAP = {
 
 export type UserRoleType = ValueOf<typeof USER_ROLE_MAP>;
 
+export const USER_LEVEL_MAP = {
+  NEW: 'Новичок',
+  MIDDLE: 'Писатель',
+  SENIOR: 'Бывалый',
+};
+
+export const USER_ID_KEY = 'userId';
+
+export type UserLevelType = ValueOf<typeof USER_LEVEL_MAP>;
+
 export type UserType = {
+  id: number;
   firstName: string;
   middleName?: string;
   lastName: string;
+  email: string;
   status: UserStatusType;
   role: UserRoleType;
+  level: UserLevelType;
   nickname?: string;
   avatarUrl?: string;
   description?: string;

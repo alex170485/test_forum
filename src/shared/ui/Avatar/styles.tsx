@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const AvatarWrapper = styled.div({
   width: '40px',
@@ -6,4 +6,4 @@ export const AvatarWrapper = styled.div({
   borderRadius: '20px',
   overflow: 'hidden',
   display: 'block',
-})
+});
