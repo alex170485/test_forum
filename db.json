@@ -2,7 +2,14 @@
   "users": [
     {
       "id": 1,
-      "name": "Вася"
+      "name": "Вася",
+      "email": "admin@gmail.com",
+      "posts": [
+        {
+          "id": 1,
+          "title": "hello"
+        }
+      ]
     }
   ],
   "posts": [
