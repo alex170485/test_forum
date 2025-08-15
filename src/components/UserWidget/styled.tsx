@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const Wrapper = styled.div({
   display: 'flex',
+  alignItems: 'center',
   width: '300px',
   height: '56px',
   borderRadius: '8px',
@@ -18,4 +19,9 @@ export const Title = styled.div({
 export const SubTitle = styled.div({
   fontSize: '12px',
   color: '#7b92ad',
+});
+
+export const AvatarPhoto = styled.img({
+  width: '100%',
+  height: '100%',
 });

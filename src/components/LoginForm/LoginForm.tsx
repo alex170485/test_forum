@@ -6,14 +6,18 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { loginValidation } from '@/components/LoginForm/validation.ts';
 import { FormInput } from '@/shared/ui/form/FormInput/FormInput.tsx';
 import { FormProviderWrapper } from '@/shared/ui/form/FormProviderWrapper/FormProviderWrapper.tsx';
+import { useUserContext } from '@/userContext.tsx';
+import { MOCK_ADMIN_DATA, MOCK_ADMIN_EMAIL, MOCK_USER_DATA, MOCK_USER_EMAIL } from '@/components/LoginForm/mockData.ts';
 
 type LoginFormPropsType = {
   onClose: () => void;
 };
 
 export const LoginForm = ({ onClose }: LoginFormPropsType) => {
+  const { setUserData } = useUserContext();
+
   const methods = useForm<FieldValues>({
-    mode: 'onSubmit',
+    mode: 'onBlur',
     reValidateMode: 'onChange',
     resolver: yupResolver(loginValidation),
     defaultValues: {
@@ -25,7 +29,19 @@ export const LoginForm = ({ onClose }: LoginFormPropsType) => {
   const { handleSubmit } = methods;
 
   const onSubmit = (values: FieldValues) => {
-    console.log('111', values);
+    if (values.email === MOCK_ADMIN_EMAIL) {
+      setUserData(MOCK_ADMIN_DATA);
+      onClose();
+
+      return;
+    }
+
+    if (values.email === MOCK_USER_EMAIL) {
+      setUserData(MOCK_USER_DATA);
+      onClose();
+
+      return;
+    }
   };
 
   return (
@@ -42,12 +58,8 @@ export const LoginForm = ({ onClose }: LoginFormPropsType) => {
           <FormInput label='password' name='password' />
 
           <Box width='100%' display='flex' justifyContent='space-between' columnGap='20px' mt='20px'>
-            <Button variant='primary' onClick={onClose}>
-              Закрыть
-            </Button>
-            <Button variant='primary' type='submit'>
-              Воити
-            </Button>
+            <Button onClick={onClose}>Закрыть</Button>
+            <Button type='submit'>Воити</Button>
           </Box>
         </FormProviderWrapper>
       </Box>
