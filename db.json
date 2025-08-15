@@ -3,13 +3,7 @@
     {
       "id": 1,
       "name": "Вася",
-      "email": "admin@gmail.com",
-      "posts": [
-        {
-          "id": 1,
-          "title": "hello"
-        }
-      ]
+      "email": "admin@gmail.com"
     }
   ],
   "posts": [
@@ -20,5 +14,11 @@
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "myPosts": [
+    {
+      "id": 1,
+      "title": "hello"
+    }
+  ]
 }
