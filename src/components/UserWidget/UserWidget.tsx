@@ -19,7 +19,7 @@ export const UserWidget = () => {
   const userId = localStorageService.get(USER_ID_KEY);
   const { data: user } = useUserByIdQuery(userId);
 
-  console.log('111 user', user)
+  console.log('111 user', user);
 
   const title = user?.nickname ? user.nickname : 'Гость';
   const subTitle = user?.level ? user?.level : 'Анонимный пользователь';

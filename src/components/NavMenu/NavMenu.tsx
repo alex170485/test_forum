@@ -1,37 +1,47 @@
-import { MenuListItem, MenuListWrapper, Wrapper } from '@/components/NavMenu/styles.tsx';
-import { createSearchParams, useNavigate } from 'react-router';
+import { CoveringBlock, MenuListItem, MenuListWrapper, Wrapper } from '@/components/NavMenu/styles.tsx';
+import { useNavigate } from 'react-router';
 import { forumsPagePath } from '@/bundle/ForumsPage/path.ts';
 import { useUserContext } from '@/userContext.tsx';
+import { useEffect, useState } from 'react';
+import { MENU_ITEM_MAP, MenuItemType } from '@/types.ts';
+import { getAdminDashboardPath } from '@/bundle/AdminDashboardPage/path.ts';
 
-type ForumsSortType = 'new' | 'popular';
 type NavMenuPropsType = {
   onOpen: () => void;
 };
 
 export const NavMenu = ({ onOpen }: NavMenuPropsType) => {
   const navigate = useNavigate();
-  const { isUser, isAdmin } = useUserContext();
+  const { isUser, isAdmin, user } = useUserContext();
+  const [isActiveMenu, setIsActiveMenu] = useState<MenuItemType>(MENU_ITEM_MAP.ALL);
 
-  const navigateToForums = (forumsSort?: ForumsSortType) => {
-    navigate({
-      pathname: forumsPagePath(),
-      search:
-        forumsSort &&
-        createSearchParams({
-          sort: `${forumsSort}`,
-        }).toString(),
-    });
+  const toAllForums = () => {
+    setIsActiveMenu(MENU_ITEM_MAP.ALL);
+    navigate(forumsPagePath());
   };
+
+  const toDashboard = () => {
+    setIsActiveMenu(MENU_ITEM_MAP.DASHBOARD);
+    navigate(getAdminDashboardPath());
+  };
+
+  const toProfile = () => {
+    setIsActiveMenu(MENU_ITEM_MAP.PROFILE);
+    onOpen();
+  };
+
+  useEffect(() => {
+    if (!user) setIsActiveMenu(MENU_ITEM_MAP.ALL);
+  }, [user]);
 
   return (
     <Wrapper>
       <MenuListWrapper>
-        <MenuListItem onClick={() => navigateToForums()}>Все форумы</MenuListItem>
-        <MenuListItem onClick={() => navigateToForums('new')}>Новое</MenuListItem>
-        <MenuListItem onClick={() => navigateToForums('popular')}>Популярное</MenuListItem>
+        <CoveringBlock role={user?.role} activeItem={isActiveMenu} />
+        <MenuListItem onClick={toAllForums}>Все форумы</MenuListItem>
         {isUser && <MenuListItem>Мои форумы</MenuListItem>}
-        {(isUser || isAdmin) && <MenuListItem onClick={onOpen}>Профаил</MenuListItem>}
-        {isAdmin && <MenuListItem>Админка</MenuListItem>}
+        {(isUser || isAdmin) && <MenuListItem onClick={toProfile}>Профаил</MenuListItem>}
+        {isAdmin && <MenuListItem onClick={toDashboard}>Админка</MenuListItem>}
       </MenuListWrapper>
     </Wrapper>
   );

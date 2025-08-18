@@ -39,3 +39,12 @@ export type UserType = {
 };
 
 export const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/heic', 'image/webp'];
+
+export const MENU_ITEM_MAP = {
+  ALL: 'all',
+  PROFILE: 'profile',
+  DASHBOARD: 'dashboard',
+  MY_FORUM: 'my_forum',
+} as const;
+
+export type MenuItemType = ValueOf<typeof MENU_ITEM_MAP>;
