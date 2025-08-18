@@ -1,6 +1,5 @@
 import { CoveringBlock, MenuListItem, MenuListWrapper, Wrapper } from '@/components/NavMenu/styles.tsx';
 import { useNavigate } from 'react-router';
-import { forumsPagePath } from '@/bundle/ForumsPage/path.ts';
 import { useUserContext } from '@/userContext.tsx';
 import { useEffect, useState } from 'react';
 import { MENU_ITEM_MAP, MenuItemType } from '@/types.ts';
@@ -17,7 +16,7 @@ export const NavMenu = ({ onOpen }: NavMenuPropsType) => {
 
   const toAllForums = () => {
     setIsActiveMenu(MENU_ITEM_MAP.ALL);
-    navigate(forumsPagePath());
+    navigate('/');
   };
 
   const toDashboard = () => {

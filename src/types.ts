@@ -48,3 +48,33 @@ export const MENU_ITEM_MAP = {
 } as const;
 
 export type MenuItemType = ValueOf<typeof MENU_ITEM_MAP>;
+
+export type AuthorType = {
+  id: number;
+  date: string;
+  nickname: string;
+  avatarUrl: string;
+};
+
+export type PostType = {
+  id: number;
+  message: string;
+  author: AuthorType;
+  like: string;
+};
+
+export const FORUM_STATUS_TYPE = {
+  NEW: 'new',
+  OLD: 'old',
+} as const;
+
+export type ForumStatusType = ValueOf<typeof FORUM_STATUS_TYPE>;
+
+export type ForumType = {
+  id: number;
+  title: string;
+  author: AuthorType;
+  ordering: string;
+  status: ForumStatusType;
+  posts: PostType[];
+};
