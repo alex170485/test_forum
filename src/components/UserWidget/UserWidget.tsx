@@ -9,10 +9,12 @@ import { useUserByIdQuery } from '@/ApiHooks/useUserByIdQuery.ts';
 import { localStorageService } from '@/helpers/localStorageService.ts';
 import { useQueryClient } from '@tanstack/react-query';
 import { USER_ID_KEY } from '@/types.ts';
+import { useUserContext } from '@/userContext.tsx';
 
 export const UserWidget = () => {
   const queryClient = useQueryClient();
   const [isOpen, setIsOpen] = useState(false);
+  const { setUserData, removeUserData } = useUserContext();
 
   const userId = localStorageService.get(USER_ID_KEY);
   const { data: user } = useUserByIdQuery(userId);
@@ -21,7 +23,7 @@ export const UserWidget = () => {
 
   const logout = () => {
     localStorageService.remove(USER_ID_KEY);
-
+    removeUserData();
     // window.location.reload();
     queryClient.resetQueries({ queryKey: ['getUser', userId] });
   };
@@ -31,6 +33,12 @@ export const UserWidget = () => {
 
     if (user?.id && currentUserId !== user?.id) {
       localStorageService.set(USER_ID_KEY, user?.id);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (user) {
+      setUserData(user);
     }
   }, [user]);
 
