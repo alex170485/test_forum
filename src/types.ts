@@ -20,6 +20,16 @@ export const USER_LEVEL_MAP = {
   SENIOR: 'Бывалый',
 };
 
+export const USER_ROLE_TRANSLATE_MAP = {
+  [USER_ROLE_MAP.ADMIN]: 'Администратор',
+  [USER_ROLE_MAP.USER]: 'Пользователь',
+}
+
+export const USER_STATUS_TRANSLATE_MAP = {
+  [USER_STATUS_MAP.ACTIVE]: 'Активный',
+  [USER_STATUS_MAP.BLOCK]: 'Заблокирован'
+}
+
 export const USER_ID_KEY = 'userId';
 
 export type UserLevelType = ValueOf<typeof USER_LEVEL_MAP>;
@@ -78,3 +88,11 @@ export type ForumType = {
   status: ForumStatusType;
   posts: PostType[];
 };
+
+export const DASHBOARD_SIDE_MENU_ITEM_TYPE = {
+  USERS: 'users',
+  FORUMS: 'forums',
+} as const;
+
+export type DashboardSideMenuItemType = ValueOf<typeof DASHBOARD_SIDE_MENU_ITEM_TYPE>;
+

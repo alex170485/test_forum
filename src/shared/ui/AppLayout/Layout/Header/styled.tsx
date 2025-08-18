@@ -17,4 +17,5 @@ export const HeaderContent = styled.div({
   marginRight: 'auto',
   display: 'flex',
   padding: '0 16px',
+  backgroundColor: COLORS.white,
 });
