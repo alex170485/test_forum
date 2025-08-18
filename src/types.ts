@@ -23,12 +23,12 @@ export const USER_LEVEL_MAP = {
 export const USER_ROLE_TRANSLATE_MAP = {
   [USER_ROLE_MAP.ADMIN]: 'Администратор',
   [USER_ROLE_MAP.USER]: 'Пользователь',
-}
+};
 
 export const USER_STATUS_TRANSLATE_MAP = {
   [USER_STATUS_MAP.ACTIVE]: 'Активный',
-  [USER_STATUS_MAP.BLOCK]: 'Заблокирован'
-}
+  [USER_STATUS_MAP.BLOCK]: 'Заблокирован',
+};
 
 export const USER_ID_KEY = 'userId';
 
@@ -95,4 +95,3 @@ export const DASHBOARD_SIDE_MENU_ITEM_TYPE = {
 } as const;
 
 export type DashboardSideMenuItemType = ValueOf<typeof DASHBOARD_SIDE_MENU_ITEM_TYPE>;
-

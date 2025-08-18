@@ -10,13 +10,17 @@ import { FormTextArea } from '@/shared/ui/form/FormTextArea/FormTextArea.tsx';
 import { Avatar } from '@/shared/ui/Avatar/Avatar.tsx';
 import { useUpdateUserDetailsQuery } from '@/apiHooks/useUpdateUserDetailsQuery.ts';
 import { UpdateUserDetailsPayloadType } from '@/api/updateUserDetailsApi.ts';
+import { Loader } from '@/shared/ui/Loader/Loader.tsx';
 
 type EditProfileFormDataPropsType = {
   user: UserType | null;
   onClose: () => void;
+  isLoading?: boolean;
 };
 
-export const EditProfileForm = ({ user, onClose }: EditProfileFormDataPropsType) => {
+export const EditProfileForm = ({ user, onClose, isLoading }: EditProfileFormDataPropsType) => {
+  if (isLoading) return <Loader />;
+
   const { mutate } = useUpdateUserDetailsQuery(String(user?.id), onClose);
 
   const methods = useForm<FieldValues>({

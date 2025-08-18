@@ -1,8 +1,8 @@
-import ApiService from "@/ApiService.ts";
-import {UserType} from "@/types.ts";
+import ApiService from '@/ApiService.ts';
+import { UserType } from '@/types.ts';
 
 export const getUsersApi = async () => {
-  const uri = '/users'
+  const uri = '/users';
 
-  return ApiService.GET<UserType[]>(uri)
-}
+  return ApiService.GET<UserType[]>(uri);
+};
