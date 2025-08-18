@@ -1,0 +1,143 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Иван",
+      "middleName": "Иванович",
+      "lastName": "Иванов",
+      "email": "admin@gmail.com",
+      "status": "active",
+      "role": "admin",
+      "level": "Бывалый",
+      "nickname": "vanya",
+      "avatarUrl": "https://99px.ru/sstorage/1/2025/04/image_10804251706516678579.jpg",
+      "description": "Главный администратор"
+    },
+    {
+      "id": 2,
+      "firstName": "Петр",
+      "lastName": "Петров",
+      "email": "petr.petrov@example.com",
+      "status": "active",
+      "role": "user",
+      "level": "Новичок",
+      "nickname": "petya",
+      "description": "Обычный пользователь",
+      "avatarUrl": "https://99px.ru/sstorage/1/2025/06/image_10506252105533018831.jpg"
+    },
+    {
+      "id": 3,
+      "firstName": "Сергей",
+      "middleName": "Сергеевич",
+      "lastName": "Сергеев",
+      "email": "sergey.sergeev@example.com",
+      "status": "block",
+      "role": "user",
+      "level": "Писатель",
+      "avatarUrl": "https://99px.ru/sstorage/1/2024/09/image_10109241449481468971.jpg"
+    },
+    {
+      "id": 4,
+      "firstName": "Анна",
+      "lastName": "Смирнова",
+      "email": "anna.smirnova@example.com",
+      "status": "active",
+      "role": "user",
+      "level": "Новичок",
+      "nickname": "ann_sm",
+      "avatarUrl": "https://99px.ru/sstorage/1/2024/08/image_11108241127489193159.jpg"
+    },
+    {
+      "id": 5,
+      "firstName": "Мария",
+      "middleName": "Петровна",
+      "lastName": "Кузнецова",
+      "email": "maria.kuznetsova@example.com",
+      "status": "active",
+      "role": "admin",
+      "level": "Бывалый",
+      "avatarUrl": "https://99px.ru/sstorage/1/2018/02/image_1150218003801514732.jpg",
+      "description": "Администратор поддержки"
+    }
+  ],
+  "forums": [
+    {
+      "id": 1,
+      "title": "Как вам Рик и морти новый сезон?",
+      "author": {
+        "id": 1,
+        "date": "01/01/2027",
+        "nickname": "vanya",
+        "avatarUrl": "https://99px.ru/sstorage/1/2025/04/image_10804251706516678579.jpg"
+      },
+      "ordering": "1",
+      "status": "new",
+      "posts": [
+        {
+          "id": 1,
+          "message": "Мне понравился",
+          "author": {
+            "id": 1,
+            "date": "01/01/2027",
+            "nickname": "vanya",
+            "avatarUrl": "https://99px.ru/sstorage/1/2025/04/image_10804251706516678579.jpg"
+          },
+          "like": "3"
+        },
+        {
+          "id": 2,
+          "message": "Ерунда несусветная",
+          "author": {
+            "id": 1,
+            "date": "01/01/2027",
+            "nickname": "vanya",
+            "avatarUrl": "https://99px.ru/sstorage/1/2025/04/image_10804251706516678579.jpg"
+          },
+          "like": "3"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Как вам Рик и морти новый сезон?",
+      "author": {
+        "id": 1,
+        "date": "01/01/2027",
+        "nickname": "vanya",
+        "avatarUrl": "https://99px.ru/sstorage/1/2025/04/image_10804251706516678579.jpg"
+      },
+      "ordering": "2",
+      "status": "new",
+      "posts": [
+        {
+          "id": 1,
+          "message": "Мне понравился",
+          "author": {
+            "id": 1,
+            "date": "01/01/2027",
+            "nickname": "vanya",
+            "avatarUrl": "https://99px.ru/sstorage/1/2025/04/image_10804251706516678579.jpg"
+          },
+          "like": "3"
+        },
+        {
+          "id": 2,
+          "message": "Ерунда несусветная",
+          "author": {
+            "id": 1,
+            "date": "01/01/2027",
+            "nickname": "vanya",
+            "avatarUrl": "https://99px.ru/sstorage/1/2025/04/image_10804251706516678579.jpg"
+          },
+          "like": "3"
+        }
+      ]
+    }
+  ],
+  "my_posts": [
+    {
+      "id": 1,
+      "title": "hello"
+    }
+  ]
+}
