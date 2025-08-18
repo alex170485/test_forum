@@ -1,4 +1,4 @@
-import { useUserByIdQuery } from '@/ApiHooks/useUserByIdQuery.ts';
+import { useUserByIdQuery } from '@/apiHooks/useUserByIdQuery.ts';
 import { localStorageService } from '@/helpers/localStorageService.ts';
 import { USER_ID_KEY, USER_ROLE_MAP } from '@/types.ts';
 import { Navigate, Outlet } from 'react-router';

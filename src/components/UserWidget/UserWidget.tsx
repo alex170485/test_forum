@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/shared/ui/Button/Button.tsx';
 import { LoginForm } from '@/components/LoginForm/LoginForm.tsx';
 import { Avatar } from '@/shared/ui/Avatar/Avatar.tsx';
-import { useUserByIdQuery } from '@/ApiHooks/useUserByIdQuery.ts';
+import { useUserByIdQuery } from '@/apiHooks/useUserByIdQuery.ts';
 import { localStorageService } from '@/helpers/localStorageService.ts';
 import { useQueryClient } from '@tanstack/react-query';
 import { USER_ID_KEY } from '@/types.ts';
@@ -19,12 +19,14 @@ export const UserWidget = () => {
   const userId = localStorageService.get(USER_ID_KEY);
   const { data: user } = useUserByIdQuery(userId);
 
+  console.log('111 user', user)
+
   const title = user?.nickname ? user.nickname : 'Гость';
+  const subTitle = user?.level ? user?.level : 'Анонимный пользователь';
 
   const logout = () => {
     localStorageService.remove(USER_ID_KEY);
     removeUserData();
-    // window.location.reload();
     queryClient.resetQueries({ queryKey: ['getUser', userId] });
   };
 
@@ -45,22 +47,26 @@ export const UserWidget = () => {
   return (
     <>
       <Wrapper>
-        <Avatar url={user?.avatarUrl} />
-        <Box display='flex' flexDirection='column' justifyContent='space-between'>
-          <Title>{title}</Title>
-          <SubTitle>Анонимный пользователь</SubTitle>
+        <Box display='flex' alignItems='center' columnGap='8px'>
+          <Avatar avatarUrl={user?.avatarUrl} />
+          <Box display='flex' flexDirection='column' justifyContent='space-between'>
+            <Title>{title}</Title>
+            <SubTitle>{subTitle}</SubTitle>
+          </Box>
         </Box>
-        {!user ? (
-          <Button
-            onClick={() => {
-              setIsOpen(true);
-            }}
-          >
-            Воити
-          </Button>
-        ) : (
-          <Button onClick={logout}>Выйти</Button>
-        )}
+        <Box width='100px'>
+          {!user ? (
+            <Button
+              onClick={() => {
+                setIsOpen(true);
+              }}
+            >
+              Воити
+            </Button>
+          ) : (
+            <Button onClick={logout}>Выйти</Button>
+          )}
+        </Box>
       </Wrapper>
       <ModalWindow isOpen={isOpen}>
         <LoginForm

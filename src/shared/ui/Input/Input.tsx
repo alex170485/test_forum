@@ -1,6 +1,6 @@
 import { ComponentPropsWithRef, ReactNode } from 'react';
 import { Box } from '../Box/Box';
-import { CustomInput } from './styles';
+import { CustomInput, Label } from './styles';
 import { InputError } from './InputError/InputError';
 
 export type InputType = ComponentPropsWithRef<'input'> & {
@@ -26,8 +26,8 @@ export const Input = ({
   return (
     <Box display='flex' flexDirection='column' width='100%'>
       {label && (
-        <Box display='flex' justifyContent='start' mb='4px' columnGap='4px'>
-          {label}
+        <Box mb='4px'>
+          <Label>{label}</Label>
         </Box>
       )}
       <Box position='relative'>

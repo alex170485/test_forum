@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 export const Wrapper = styled.div({
   display: 'flex',
   alignItems: 'center',
+  justifyContent: 'space-between',
   width: '300px',
   height: '56px',
   borderRadius: '8px',

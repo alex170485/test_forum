@@ -37,3 +37,5 @@ export type UserType = {
   avatarUrl?: string;
   description?: string;
 };
+
+export const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/heic', 'image/webp'];

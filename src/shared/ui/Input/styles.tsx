@@ -21,7 +21,13 @@ export const CustomInput = styled.input<CustomInputPropsType>((props) => ({
     fontSize: '14px',
   },
 
-  '&:focus': {
+  '&:hover:not([disabled])': {
     border: `1px solid ${COLORS.blue[600]}`,
   },
 }));
+
+export const Label = styled.div({
+  fontFamily: 'Montserrat-Regular, sans-serif',
+  fontSize: '14px',
+  fontWeight: 500,
+});

@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { ButtonWrapper, CloseDrawerButton, DrawerContent, DrawerOverlay, DrawerWrapper } from './styles.tsx';
+import CloseButtonIcon from '@/assets/CloseButtonIcon.svg';
 
 type DrawerType = {
   isOpen: boolean;
@@ -39,7 +40,9 @@ export const Drawer = ({ isOpen, onClose, children }: DrawerType) => {
         <DrawerWrapper ref={nodeRef}>
           <DrawerContent>
             <ButtonWrapper onClick={onClose}>
-              <CloseDrawerButton>Закрыть</CloseDrawerButton>
+              <CloseDrawerButton>
+                <CloseButtonIcon />
+              </CloseDrawerButton>
             </ButtonWrapper>
             {children}
           </DrawerContent>

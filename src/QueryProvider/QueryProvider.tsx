@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { MutationCache, QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { App } from '@/App.tsx';
+import { SnackBar } from '@/shared/ui/SnackBar/SnakBar.tsx';
 
 export const QueryProvider = () => {
   const [queryClient] = useState(
@@ -22,6 +23,7 @@ export const QueryProvider = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <App />
+      <SnackBar />
     </QueryClientProvider>
   );
 };

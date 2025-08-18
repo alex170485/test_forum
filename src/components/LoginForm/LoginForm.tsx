@@ -30,7 +30,6 @@ export const LoginForm = ({ onClose }: LoginFormPropsType) => {
   const onSubmit = (values: FieldValues) => {
     if (values.email === MOCK_ADMIN_EMAIL) {
       localStorageService.set(USER_ID_KEY, '1');
-      // onSetId('1');
       onClose();
 
       return;
@@ -38,7 +37,6 @@ export const LoginForm = ({ onClose }: LoginFormPropsType) => {
 
     if (values.email === MOCK_USER_EMAIL) {
       localStorageService.set(USER_ID_KEY, '2');
-      // onSetId('2');
       onClose();
 
       return;

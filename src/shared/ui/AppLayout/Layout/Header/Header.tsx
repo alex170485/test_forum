@@ -4,9 +4,13 @@ import { UserWidget } from '@/components/UserWidget/UserWidget.tsx';
 import { NavMenu } from '@/components/NavMenu/NavMenu.tsx';
 import { useState } from 'react';
 import { Drawer } from '@/shared/ui/Drawer/Drawer.tsx';
+import { EditProfileForm } from '@/components/EditProfileForm/EditProfileForm.tsx';
+import { useUserContext } from '@/userContext.tsx';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user } = useUserContext();
+
   return (
     <>
       <Wrapper>
@@ -18,7 +22,7 @@ export const Header = () => {
         </HeaderContent>
       </Wrapper>
       <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        1212121
+        <EditProfileForm user={user} onClose={() => setIsOpen(false)} />
       </Drawer>
     </>
   );
