@@ -4,12 +4,16 @@ import { UserWidget } from '@/components/UserWidget/UserWidget.tsx';
 import { NavMenu } from '@/components/NavMenu/NavMenu.tsx';
 import { useState } from 'react';
 import { Drawer } from '@/shared/ui/Drawer/Drawer.tsx';
-import { EditProfileForm } from '@/components/EditProfileForm/EditProfileForm.tsx';
-import { useUserContext } from '@/userContext.tsx';
+import { EditUserDetailsForm } from '@/components/EditUserDetailsForm/EditUserDetailsForm.tsx';
+import { localStorageService } from '@/helpers/localStorageService.ts';
+import { USER_ID_KEY } from '@/types.ts';
+import { useUserByIdQuery } from '@/apiHooks/useUserByIdQuery.ts';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { user } = useUserContext();
+
+  const userId = localStorageService.get(USER_ID_KEY);
+  const { data: user } = useUserByIdQuery(userId);
 
   return (
     <>
@@ -22,7 +26,7 @@ export const Header = () => {
         </HeaderContent>
       </Wrapper>
       <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <EditProfileForm user={user} onClose={() => setIsOpen(false)} />
+        <EditUserDetailsForm user={user} onClose={() => setIsOpen(false)} />
       </Drawer>
     </>
   );

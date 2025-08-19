@@ -14,7 +14,7 @@ export const AdminDashboardPage = () => {
     setDashboardItemType(item);
   };
 
-  const { data: users } = useGetUsers();
+  const { data: users, isPending } = useGetUsers();
 
   return (
     <Wrapper>
@@ -30,7 +30,9 @@ export const AdminDashboardPage = () => {
       </Box>
 
       <Box width='100%' ml='200px'>
-        {dashboardItemType === DASHBOARD_SIDE_MENU_ITEM_TYPE.USERS && <AllUsersBlock users={users} />}
+        {dashboardItemType === DASHBOARD_SIDE_MENU_ITEM_TYPE.USERS && (
+          <AllUsersBlock users={users} isLoading={isPending} />
+        )}
         {dashboardItemType === DASHBOARD_SIDE_MENU_ITEM_TYPE.FORUMS && <div>12121</div>}
       </Box>
     </Wrapper>

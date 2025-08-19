@@ -1,14 +1,14 @@
 import ApiService from '@/ApiService.ts';
 
-export type UpdateUserDetailsPayloadType = {
+export type EditUserDetailsPayloadType = {
   firstName: string;
   middleName?: string;
   lastName: string;
-  nickname: string;
+  nickname?: string;
   description?: string;
 };
 
-export const updateUserDetailsApi = async (userId: string, payload: UpdateUserDetailsPayloadType) => {
+export const updateUserDetailsApi = async (userId: string, payload: EditUserDetailsPayloadType) => {
   const uri = `users/${userId}`;
 
   return ApiService.PUT(uri, payload);

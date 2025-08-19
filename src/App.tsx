@@ -4,8 +4,6 @@ import { AppLayout } from '@/shared/ui/AppLayout/AppLayout.tsx';
 import { ForumsPage } from '@/bundle/ForumsPage/ForumsPage.tsx';
 import { forumPagePath } from '@/bundle/ForumPage/path.ts';
 import { ForumPage } from '@/bundle/ForumPage/ForumPage.tsx';
-import { profilePagePath } from '@/bundle/ProfilePage/path.ts';
-import { ProfilePage } from '@/bundle/ProfilePage/ProfilePage.tsx';
 import { ProtectedRoute } from '@/routes/ProtectedRoute.tsx';
 import { AdminProtectedRoute } from '@/routes/AdminProtectedRoute.tsx';
 import { getAdminDashboardPath } from '@/bundle/AdminDashboardPage/path.ts';
@@ -18,7 +16,6 @@ export const App = () => {
         <Route path='/' element={<ForumsPage />} />
         <Route path={forumPagePath()} element={<ForumPage />} />
         <Route element={<ProtectedRoute />}>
-          <Route path={profilePagePath()} element={<ProfilePage />} />
           <Route element={<AdminProtectedRoute />}>
             <Route path={getAdminDashboardPath()} element={<AdminDashboardPage />} />
           </Route>

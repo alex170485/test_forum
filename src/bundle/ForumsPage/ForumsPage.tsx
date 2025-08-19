@@ -10,6 +10,7 @@ import { LastMessageWrapper, WidgetTitle } from '@/bundle/ForumsPage/styles.tsx'
 import MessageIcon from '@/assets/MessageIcon.svg';
 import { useNavigate } from 'react-router';
 import { forumPagePath } from '@/bundle/ForumPage/path.ts';
+import { Loader } from '@/shared/ui/Loader/Loader.tsx';
 
 export const ForumsPage = () => {
   const navigate = useNavigate();
@@ -21,7 +22,9 @@ export const ForumsPage = () => {
     navigate(forumPagePath(String(id)));
   };
 
-  const { data: forums } = useGetForums();
+  const { data: forums, isPending } = useGetForums();
+
+  if (isPending) return <Loader />;
 
   return (
     <>

@@ -2,31 +2,31 @@ import { UserType } from '@/types.ts';
 import { Box } from '@/shared/ui/Box/Box.tsx';
 import { FieldValues, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { editProfileValidation } from '@/components/EditProfileForm/validation.ts';
+import { editUserDetailsValidation } from '@/components/EditUserDetailsForm/validation.ts';
 import { FormProviderWrapper } from '@/shared/ui/form/FormProviderWrapper/FormProviderWrapper.tsx';
 import { Button } from '@/shared/ui/Button/Button.tsx';
 import { FormInput } from '@/shared/ui/form/FormInput/FormInput.tsx';
 import { FormTextArea } from '@/shared/ui/form/FormTextArea/FormTextArea.tsx';
 import { Avatar } from '@/shared/ui/Avatar/Avatar.tsx';
-import { useUpdateUserDetailsQuery } from '@/apiHooks/useUpdateUserDetailsQuery.ts';
-import { UpdateUserDetailsPayloadType } from '@/api/updateUserDetailsApi.ts';
+import { useEditUserDetailsQuery } from '@/apiHooks/useEditUserDetailsQuery.ts';
+import { EditUserDetailsPayloadType } from '@/api/updateUserDetailsApi.ts';
 import { Loader } from '@/shared/ui/Loader/Loader.tsx';
 
 type EditProfileFormDataPropsType = {
-  user: UserType | null;
+  user?: UserType;
   onClose: () => void;
   isLoading?: boolean;
 };
 
-export const EditProfileForm = ({ user, onClose, isLoading }: EditProfileFormDataPropsType) => {
+export const EditUserDetailsForm = ({ user, onClose, isLoading }: EditProfileFormDataPropsType) => {
   if (isLoading) return <Loader />;
 
-  const { mutate } = useUpdateUserDetailsQuery(String(user?.id), onClose);
+  const { mutate } = useEditUserDetailsQuery(String(user?.id), onClose);
 
   const methods = useForm<FieldValues>({
     mode: 'onBlur',
     reValidateMode: 'onChange',
-    resolver: yupResolver(editProfileValidation),
+    resolver: yupResolver(editUserDetailsValidation),
     defaultValues: {
       firstName: user?.firstName || '',
       middleName: user?.middleName || '',
@@ -38,7 +38,7 @@ export const EditProfileForm = ({ user, onClose, isLoading }: EditProfileFormDat
 
   const { handleSubmit } = methods;
 
-  const onSubmit = (values: UpdateUserDetailsPayloadType) => {
+  const onSubmit = (values: EditUserDetailsPayloadType) => {
     mutate(values);
   };
 
